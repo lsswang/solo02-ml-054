@@ -1,0 +1,93 @@
+{
+  "atoms": ["sg", "pl", "reg", "y"],
+  "automaton": {
+    "start": 0,
+    "accept": [0, 1, 2],
+    "transitions": [
+      {
+        "id": "plural-s",
+        "from": 0,
+        "to": 1,
+        "requires": {"number": "sg", "pattern": "reg"},
+        "set_features": {"number": "pl"},
+        "replace_tail": ["", ""],
+        "prefix": "",
+        "suffix": "s",
+        "weight": 1.0
+      },
+      {
+        "id": "y-to-ies",
+        "from": 0,
+        "to": 1,
+        "requires": {"number": "sg", "pattern": "y"},
+        "set_features": {"number": "pl"},
+        "replace_tail": ["y", "ies"],
+        "prefix": "",
+        "suffix": "",
+        "weight": 0.8
+      },
+      {
+        "id": "prefix-un",
+        "from": 1,
+        "to": 2,
+        "requires": {},
+        "set_features": {},
+        "replace_tail": ["", ""],
+        "prefix": "un",
+        "suffix": "",
+        "weight": 0.5
+      },
+      {
+        "id": "dead-gate",
+        "from": 0,
+        "to": 2,
+        "requires": {"number": "sg", "pattern": "reg", "extra": "y"},
+        "set_features": {},
+        "replace_tail": ["", ""],
+        "prefix": "X",
+        "suffix": "",
+        "weight": 1.0
+      }
+    ]
+  },
+  "entries": [
+    {"id": "cat", "stem": "cat", "cat": "N",
+     "features": {"number": "sg", "pattern": "reg"}, "weight": 1.0},
+    {"id": "sleep", "stem": "sleep", "cat": "V",
+     "features": {"number": "pl"}, "weight": 1.0},
+    {"id": "runs", "stem": "run", "cat": "V",
+     "features": {"number": "sg", "pattern": "reg"}, "weight": 1.0},
+    {"id": "party", "stem": "party", "cat": "N",
+     "features": {"number": "sg", "pattern": "y"}, "weight": 1.0},
+    {"id": "happy", "stem": "happy", "cat": "N",
+     "features": {"number": "sg", "pattern": "y"}, "weight": 1.0},
+    {"id": "sheep-sg", "stem": "sheep", "cat": "N",
+     "features": {"number": "sg"}, "weight": 1.0},
+    {"id": "sheep-pl", "stem": "sheep", "cat": "N",
+     "features": {"number": "pl"}, "weight": 2.0}
+  ],
+  "agreement_grammar": {
+    "start": {"cat": "S", "features": {}},
+    "atoms": ["sg", "pl", "reg", "y"],
+    "rules": [
+      {"id": "sentence", "weight": 1.0,
+       "lhs": {"cat": "S", "features": {}},
+       "rhs": [{"cat": "N", "features": {"number": "?n"}},
+               {"cat": "V", "features": {"number": "?n"}}]}
+    ]
+  },
+  "np_grammar": {
+    "start": {"cat": "S", "features": {}},
+    "atoms": ["sg", "pl", "reg", "y"],
+    "rules": [
+      {"id": "sentence", "weight": 1.0,
+       "lhs": {"cat": "S", "features": {}},
+       "rhs": [{"cat": "NP", "features": {"number": "?n"}},
+               {"cat": "V", "features": {"number": "?n"}}]},
+      {"id": "nounphrase", "weight": 1.0,
+       "lhs": {"cat": "NP", "features": {"number": "?n"}},
+       "rhs": [{"cat": "D", "features": {"number": "?n"}},
+               {"cat": "N", "features": {"number": "?n"}}]}
+    ]
+  }
+}

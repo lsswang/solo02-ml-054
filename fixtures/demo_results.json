@@ -1,0 +1,305 @@
+{
+  "description": "教学规模合成词法/句法演示；不代表真实语言解析精度",
+  "morphology": {
+    "cats_analyses": [
+      {
+        "analysis_id": "m-3a42da87e4670931",
+        "entry_id": "cat",
+        "transitions": [
+          "plural-s"
+        ],
+        "surface": "cats",
+        "cat": "N",
+        "features": {
+          "number": "pl",
+          "pattern": "reg"
+        },
+        "weight": 1.0
+      }
+    ],
+    "sleep_analyses": [
+      {
+        "analysis_id": "m-ef122d0c89e08e96",
+        "entry_id": "sleep",
+        "transitions": [],
+        "surface": "sleep",
+        "cat": "V",
+        "features": {
+          "number": "pl"
+        },
+        "weight": 1.0
+      }
+    ],
+    "parties_analyses": [
+      {
+        "analysis_id": "m-5e6282f4fabb7fc3",
+        "entry_id": "party",
+        "transitions": [
+          "y-to-ies"
+        ],
+        "surface": "parties",
+        "cat": "N",
+        "features": {
+          "number": "pl",
+          "pattern": "y"
+        },
+        "weight": 0.8
+      }
+    ],
+    "unparties_analyses": [
+      {
+        "analysis_id": "m-3cca9b83df729d2e",
+        "entry_id": "party",
+        "transitions": [
+          "y-to-ies",
+          "prefix-un"
+        ],
+        "surface": "unparties",
+        "cat": "N",
+        "features": {
+          "number": "pl",
+          "pattern": "y"
+        },
+        "weight": 0.4
+      }
+    ],
+    "happy_generation": [
+      {
+        "analysis_id": "m-93c4dafe1cc0ed99",
+        "entry_id": "happy",
+        "transitions": [],
+        "surface": "happy",
+        "cat": "N",
+        "features": {
+          "number": "sg",
+          "pattern": "y"
+        },
+        "weight": 1.0
+      },
+      {
+        "analysis_id": "m-6293f007d62ee4a5",
+        "entry_id": "happy",
+        "transitions": [
+          "y-to-ies"
+        ],
+        "surface": "happies",
+        "cat": "N",
+        "features": {
+          "number": "pl",
+          "pattern": "y"
+        },
+        "weight": 0.8
+      },
+      {
+        "analysis_id": "m-38bf1070a6d73cfb",
+        "entry_id": "happy",
+        "transitions": [
+          "y-to-ies",
+          "prefix-un"
+        ],
+        "surface": "unhappies",
+        "cat": "N",
+        "features": {
+          "number": "pl",
+          "pattern": "y"
+        },
+        "weight": 0.4
+      }
+    ],
+    "sheep_analyses": [
+      {
+        "analysis_id": "m-a954e1c5b86ed42b",
+        "entry_id": "sheep-sg",
+        "transitions": [],
+        "surface": "sheep",
+        "cat": "N",
+        "features": {
+          "number": "sg"
+        },
+        "weight": 1.0
+      },
+      {
+        "analysis_id": "m-d0c09d2ee93b813e",
+        "entry_id": "sheep-pl",
+        "transitions": [],
+        "surface": "sheep",
+        "cat": "N",
+        "features": {
+          "number": "pl"
+        },
+        "weight": 2.0
+      }
+    ],
+    "dead_edge_surfaces_absent": {
+      "Xsheep": [],
+      "Xcat": []
+    }
+  },
+  "syntax": {
+    "agreement_composition": {
+      "status": "ok",
+      "log_partition": 0.6931471805599453,
+      "best_log_weight": 0.6931471805599453,
+      "marginals": [
+        {
+          "m-a954e1c5b86ed42b": 0.0,
+          "m-d0c09d2ee93b813e": 1.0
+        },
+        {
+          "m-ef122d0c89e08e96": 1.0
+        }
+      ],
+      "best": {
+        "node": "rule",
+        "rule_id": "sentence",
+        "assignment": {
+          "?n": "pl"
+        },
+        "cat": "S",
+        "features": {},
+        "children": [
+          {
+            "node": "leaf",
+            "analysis_id": "m-d0c09d2ee93b813e",
+            "cat": "N",
+            "features": {
+              "number": "pl"
+            },
+            "weight": 2.0
+          },
+          {
+            "node": "leaf",
+            "analysis_id": "m-ef122d0c89e08e96",
+            "cat": "V",
+            "features": {
+              "number": "pl"
+            },
+            "weight": 1.0
+          }
+        ],
+        "weight": 2.0
+      },
+      "candidate_count_per_token": [
+        2,
+        1
+      ]
+    },
+    "shared_variable": {
+      "singular_agreement_status": "ok",
+      "singular_marginals": [
+        {
+          "m-522d21c5d4ccdbe4": 1.0
+        },
+        {
+          "m-08aa964fd3e19ace": 1.0
+        }
+      ],
+      "mismatch_status": "no_parse",
+      "mismatch_log_partition": null
+    },
+    "external_candidates": {
+      "status": "ok",
+      "log_partition": -1.2039728043259361,
+      "marginals": [
+        {
+          "ext-n-pl": 1.0,
+          "ext-n-sg": 0.0
+        },
+        {
+          "ext-v-pl": 1.0
+        }
+      ],
+      "hand_check": {
+        "only_pl_agrees": true,
+        "partition_weight": 0.3,
+        "marginal_ext_n_pl": 1.0,
+        "marginal_ext_n_sg": 0.0
+      }
+    },
+    "true_tie": {
+      "partition_weight": 2.0,
+      "best_rule_id": "way-one",
+      "best_log_weight": 0.0,
+      "hand_check": {
+        "two_derivations_each_weight_1": true,
+        "partition": 2.0
+      }
+    },
+    "variable_isolation": {
+      "status": "ok",
+      "rule_assignments_in_best": [
+        {
+          "rule_id": "sentence",
+          "assignment": {
+            "?n": "pl"
+          }
+        },
+        {
+          "rule_id": "np",
+          "assignment": {
+            "?n": "pl"
+          }
+        }
+      ]
+    }
+  },
+  "lexicon_change_and_stale_consumer": {
+    "before": {
+      "log_partition": 0.6931471805599453,
+      "sheep_candidates": [
+        {
+          "analysis_id": "m-a954e1c5b86ed42b",
+          "entry_id": "sheep-sg",
+          "transitions": [],
+          "surface": "sheep",
+          "cat": "N",
+          "features": {
+            "number": "sg"
+          },
+          "weight": 1.0
+        },
+        {
+          "analysis_id": "m-d0c09d2ee93b813e",
+          "entry_id": "sheep-pl",
+          "transitions": [],
+          "surface": "sheep",
+          "cat": "N",
+          "features": {
+            "number": "pl"
+          },
+          "weight": 2.0
+        }
+      ]
+    },
+    "after_adding_homograph": {
+      "log_partition": 0.9162907318741551,
+      "sheep_candidate_count": 3,
+      "marginals": [
+        {
+          "m-a954e1c5b86ed42b": 0.0,
+          "m-d0c09d2ee93b813e": 0.8,
+          "m-6179870d8c8eb256": 0.2
+        },
+        {
+          "m-ef122d0c89e08e96": 1.0
+        }
+      ],
+      "hand_check": {
+        "pl_mass_before": 2.0,
+        "pl_mass_after": 2.5,
+        "partition_tracks_full_mass": true
+      }
+    },
+    "after_edge_weight_change": {
+      "edge": "plural-s 1.0 -> 0.25",
+      "log_partition_light": -1.3862943611198906,
+      "log_partition_base": 0.0,
+      "cats_analysis_weight_light": 0.25,
+      "cats_analysis_weight_base": 1.0
+    },
+    "stale_consumer_using_old_candidates": {
+      "stale_log_partition": 0.6931471805599453,
+      "equals_before_not_after": true
+    }
+  }
+}

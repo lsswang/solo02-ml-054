@@ -1,1 +1,1 @@
-# Standard library baseline; optional mature NLP libraries are permitted.
+# 纯 Python 3.11 标准库实现，无第三方依赖；NLTK 等成熟 FST/CFG/合一库为题目可选项。
