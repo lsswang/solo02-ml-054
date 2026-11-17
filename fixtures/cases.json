@@ -1,0 +1,288 @@
+{
+  "before_entries": [
+    {
+      "id": "these",
+      "stem": "these",
+      "cat": "D",
+      "features": {
+        "number": "pl"
+      },
+      "weight": 1.0
+    },
+    {
+      "id": "fish-sg",
+      "stem": "fish",
+      "cat": "N",
+      "features": {
+        "number": "sg"
+      },
+      "weight": 1.0
+    },
+    {
+      "id": "swim",
+      "stem": "swim",
+      "cat": "V",
+      "features": {
+        "number": "pl"
+      },
+      "weight": 1.0
+    },
+    {
+      "id": "cat",
+      "stem": "cat",
+      "cat": "N",
+      "features": {
+        "number": "sg",
+        "pattern": "regular"
+      },
+      "weight": 1.0
+    },
+    {
+      "id": "sleep",
+      "stem": "sleep",
+      "cat": "V",
+      "features": {
+        "number": "pl"
+      },
+      "weight": 1.0
+    }
+  ],
+  "after_entries": [
+    {
+      "id": "these",
+      "stem": "these",
+      "cat": "D",
+      "features": {
+        "number": "pl"
+      },
+      "weight": 1.0
+    },
+    {
+      "id": "fish-sg",
+      "stem": "fish",
+      "cat": "N",
+      "features": {
+        "number": "sg"
+      },
+      "weight": 1.0
+    },
+    {
+      "id": "swim",
+      "stem": "swim",
+      "cat": "V",
+      "features": {
+        "number": "pl"
+      },
+      "weight": 1.0
+    },
+    {
+      "id": "cat",
+      "stem": "cat",
+      "cat": "N",
+      "features": {
+        "number": "sg",
+        "pattern": "regular"
+      },
+      "weight": 1.0
+    },
+    {
+      "id": "sleep",
+      "stem": "sleep",
+      "cat": "V",
+      "features": {
+        "number": "pl"
+      },
+      "weight": 1.0
+    },
+    {
+      "id": "fish-pl",
+      "stem": "fish",
+      "cat": "N",
+      "features": {
+        "number": "pl"
+      },
+      "weight": 2.0
+    }
+  ],
+  "ordinary_sentence": [
+    "cats",
+    "sleep"
+  ],
+  "ordinary_grammar": {
+    "start": {
+      "cat": "S",
+      "features": {}
+    },
+    "rules": [
+      {
+        "id": "nv",
+        "lhs": {
+          "cat": "S",
+          "features": {}
+        },
+        "rhs": [
+          {
+            "cat": "N",
+            "features": {}
+          },
+          {
+            "cat": "V",
+            "features": {}
+          }
+        ],
+        "weight": 1.0
+      }
+    ],
+    "atoms": [
+      "sg",
+      "pl",
+      "regular",
+      "y"
+    ]
+  },
+  "agreement_sentence": [
+    "these",
+    "fish",
+    "swim"
+  ],
+  "agreement_grammar": {
+    "start": {
+      "cat": "S",
+      "features": {}
+    },
+    "rules": [
+      {
+        "id": "sentence",
+        "lhs": {
+          "cat": "S",
+          "features": {}
+        },
+        "rhs": [
+          {
+            "cat": "NP",
+            "features": {
+              "number": "?n"
+            }
+          },
+          {
+            "cat": "V",
+            "features": {
+              "number": "?n"
+            }
+          }
+        ],
+        "weight": 1.0
+      },
+      {
+        "id": "nounphrase",
+        "lhs": {
+          "cat": "NP",
+          "features": {
+            "number": "?n"
+          }
+        },
+        "rhs": [
+          {
+            "cat": "D",
+            "features": {
+              "number": "?n"
+            }
+          },
+          {
+            "cat": "N",
+            "features": {
+              "number": "?n"
+            }
+          }
+        ],
+        "weight": 1.0
+      }
+    ],
+    "atoms": [
+      "sg",
+      "pl",
+      "regular",
+      "y"
+    ]
+  },
+  "morph_automaton": {
+    "start": 0,
+    "accept": [
+      0,
+      1,
+      2
+    ],
+    "transitions": [
+      {
+        "id": "plural-y",
+        "from": 0,
+        "to": 1,
+        "requires": {
+          "number": "sg",
+          "pattern": "y"
+        },
+        "set_features": {
+          "number": "pl"
+        },
+        "replace_tail": [
+          "y",
+          "ies"
+        ],
+        "prefix": "",
+        "suffix": "",
+        "weight": 0.8
+      },
+      {
+        "id": "prefix-un",
+        "from": 1,
+        "to": 2,
+        "requires": {},
+        "set_features": {},
+        "replace_tail": [
+          "",
+          ""
+        ],
+        "prefix": "un",
+        "suffix": "",
+        "weight": 0.5
+      },
+      {
+        "id": "plural-s",
+        "from": 0,
+        "to": 1,
+        "requires": {
+          "number": "sg",
+          "pattern": "regular"
+        },
+        "set_features": {
+          "number": "pl"
+        },
+        "replace_tail": [
+          "",
+          ""
+        ],
+        "prefix": "",
+        "suffix": "s",
+        "weight": 1.0
+      }
+    ]
+  },
+  "composed_entries": [
+    {
+      "id": "party",
+      "stem": "party",
+      "cat": "N",
+      "features": {
+        "number": "sg",
+        "pattern": "y"
+      },
+      "weight": 1.0
+    }
+  ],
+  "atoms": [
+    "sg",
+    "pl",
+    "regular",
+    "y"
+  ]
+}
